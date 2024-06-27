@@ -1,4 +1,5 @@
 ---
+
 title: 'First Blog Post: So it begins'
 pubDate: 2024-06-27
 description: 'First Blog Post I have made to my website'
@@ -7,9 +8,11 @@ image:
     url: 'https://docs.astro.build/assets/rose.webp'
     alt: 'The Astro logo on a dark background with a pink glow.'
 tags: ["astro", "blogging", "web development", "work in progress"]
+
 ---
 <a href="/blog/">Back to blog</a>
-# My First Blog Post
+
+# My first Blog Post
 
 ### Published on: 2024-06-27
 

@@ -1,5 +1,6 @@
 ---
 const pageTitle = "Siddhanth Methil";
+import '../styles/global.css'
 ---
 <a href="/">Home</a>
 <a href="/about/">About</a>
@@ -12,6 +13,12 @@ const pageTitle = "Siddhanth Methil";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<style>
+			h1 {
+			  color: purple;
+			  font-size: 4rem;
+			}
+		  </style>
 	</head>
 	<body>
 		<h1>{pageTitle}</h1>
