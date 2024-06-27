@@ -1,3 +1,6 @@
+---
+const pageTitle = "Blog";
+---
 <a href="/">Home</a>
 <a href="/about/">About</a>
 <a href="/blog/">Blog</a>
@@ -8,10 +11,12 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Blog</title>
+		<title>{pageTitle}</title>
+
 	</head>
 	<body>
-		<h1>Day 1</h1>
-		<h2>Website is a work in progress.</h2>
+        <h1>{pageTitle}</h1>
+        
+		<li><a href="/posts/post1/">First Blog Post: So it begins</a></li>
 	</body>
 </html>
