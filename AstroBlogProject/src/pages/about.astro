@@ -1,12 +1,11 @@
 ---
 const pageTitle = "About Me";
-import '../styles/global.css'
+import '../styles/global.css';
+import Header from '../components/Header.astro';
 ---
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Blog</a>
 
 <html lang="en">
+	<Header></Header>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -17,5 +16,8 @@ import '../styles/global.css'
 	<body>
 		<h1>{pageTitle}</h1>
 		<h2>Hello! My name is Siddhanth and this website is what I use to blog about what I am currently learning, display my Work in Progress and Completed Projects and generally write about stuff I am interested about.</h2>
+		<script>
+			import "../scripts/menu.js";
+		</script>
 	</body>
 </html>
