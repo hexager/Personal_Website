@@ -30,7 +30,7 @@ html {
     width: 40px;
     height: 5px;
     margin-bottom: 10px;
-    background-color: #ff9776;
+    background-color: #af76ff;
   }
 
 .nav-links {
@@ -54,7 +54,7 @@ html {
   
   .nav-links a:hover,
   .nav-links a:focus {
-    background-color: #ca71fa;
+    background-color: #ff9776;
   }
   
   .expanded {
