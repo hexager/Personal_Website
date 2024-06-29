@@ -1,5 +1,5 @@
 ---
-
+layout: ../../layouts/MarkdownPostLayout.astro
 title: 'First Blog Post: So it begins'
 pubDate: 2024-06-27
 description: 'First Blog Post I have made to my website'
@@ -10,11 +10,7 @@ image:
 tags: ["astro", "blogging", "web development", "work in progress"]
 
 ---
-<a href="/blog/">Back to blog</a>
 
-# My first Blog Post
-
-### Published on: 2024-06-27
 
 Hello, this is the first of many blogs I am going to be writing to document my CS journey. I plan to update this semi-regularly with new posts, both to build out this website as well as to keep myself accountable into not being too lazy. It will take me a while to get a proper schedule down though.
 
