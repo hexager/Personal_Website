@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'First Blog Post: So it begins'
+title: 'Blog #1: So it begins'
 pubDate: 2024-06-27
 description: 'First Blog Post I have made to my website'
 author: 'Siddhanth Methil'
