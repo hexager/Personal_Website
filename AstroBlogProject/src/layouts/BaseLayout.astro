@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 const {pageTitle} = Astro.props;
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
@@ -13,6 +14,7 @@ import Header from '../components/Header.astro';
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<ViewTransitions></ViewTransitions>
 		<style>
 			h1 {
 			  color: purple;
