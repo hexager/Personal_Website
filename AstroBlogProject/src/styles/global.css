@@ -56,7 +56,14 @@ html {
   .nav-links a:focus {
     background-color: #ff9776;
   }
-  
+.themeicon{
+  display:inline;
+  transition: transform 0.2s ease-in-out;
+}  
+  .themeicon:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+  }
   .expanded {
     display: unset;
   }
