@@ -9,24 +9,3 @@ const allPosts = await Astro.glob('./posts/*.md');
 	{allPosts.map((post) => <li class = "post"><a href={post.url}>{post.frontmatter.title}</a></li>)}
 	</div>
 </BaseLayout>
-<style>
-    a {
-      color: #c969da;
-      text-decoration: none;
-    }
-  
-    .posts {
-      display: inline-block;
-      flex-wrap: wrap;
-    }
-  
-    .post {
-      margin: 0.25em;
-      border: dotted 1px #c5c4c4;
-      border-radius: .5em;
-      padding: .5em 1em;
-      font-size: 1.15em;
-      background-color: #F8FCFD;
-    }
-
-</style>

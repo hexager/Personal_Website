@@ -1,24 +1,32 @@
+/*Global styles for the HTML document.*/
 html {
-    background-color: rgb(241, 245, 249);
+    background-color: #fbf4f4;
     font-family: sans-serif;
+    transition: background-color 0.3s, color 0.3s;
   }
-  
+
+/*Styles for the body element. */  
   body {
     margin: 0 auto;
     width: 100%;
     max-width: 80ch;
     padding: 1rem;
     line-height: 1.5;
+    color: #1c0e0d;
+    transition: background-color 0.3s, color 0.3s;
   }
-  
+  /*--------------------------*/
   * {
     box-sizing: border-box;
   }
-  
-  h1 {
+
+/**Styles for the header 1 element.*/  
+h1 {
     margin: 1rem 0;
-    font-size: 2.5rem;
+    font-size: 4rem;
+    color: #cc220f;
   }
+/*--------------------------*/
 /* nav styles */
 .hamburger {
     padding-right: 20px;
@@ -30,32 +38,34 @@ html {
     width: 40px;
     height: 5px;
     margin-bottom: 10px;
-    background-color: #af76ff;
+    background-color: #f06151;
   }
-
+/*--------------------------*/
+/* Set the style of navigation bar*/
 .nav-links {
     width: 100%;
     top: 5rem;
     left: 48px;
-    background-color: #ff9776;
+    background-color: #cb1a06;
     display: none;
     margin: 0;
   }
   
-  .nav-links a {
-    display: block;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
+.nav-links a {
+  color: #cc220f;
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
   
-  .nav-links a:hover,
-  .nav-links a:focus {
-    background-color: #ff9776;
-  }
+.nav-links a:hover,
+.nav-links a:focus {
+  background-color: #ea867b;
+}
 .themeicon{
   display:inline;
   transition: transform 0.2s ease-in-out;
@@ -67,8 +77,56 @@ html {
   .expanded {
     display: unset;
   }
+/*--------------------------*/
+/* TAGS*/
+.taglink a {
+  color: #00539F;
+  text-decoration: none;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  margin: 0.25em;
+  border: dotted 1px #a1a1a1;
+  border-radius: .5em;
+  padding: .5em 1em;
+  font-size: 1.15em;
+  background-color: #F8FCFD;
+}
+  .tag a{
+    text-decoration: none;
+    color: #1f259e;
+  }
+
+/*--------------------------*/
+/* POSTS */
+.posts {
+    display: inline-block;
+    flex-wrap: wrap;
+  }
   
-  @media screen and (min-width: 636px) {
+.post {
+    margin: 0.25em;
+    border: dotted 1px #c5c4c4;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+  
+.post a {
+    color: #6168e0;
+    text-decoration: none;
+  }
+/*--------------------------*/
+
+/*Mobile Response*/
+
+@media screen and (min-width: 636px) {
     .nav-links {
       margin-left: 5em;
       display: block;
@@ -85,11 +143,46 @@ html {
         display:none;
     }
   }
+/*------------------*/
+/*------------DARK MODE--------------*/
+/*-Global style for background*/
 html.dark {
-  background-color: #0d0950;
-  color: #fff;
+  background-color: #0b0404;
+  color: #f2e4e3;
+  ;
 }
-  
+/*--------------------------*/
+/*TAGS*/
 .dark .nav-links a {
-  color: #fff;
+  color: #ae1f0f;
+}
+.dark .nav-links a:hover,
+.dark .nav-links a:focus {
+  background-color: #5d170f;
 }  
+.dark body{
+  color: #f2e4e3;
+}
+.dark .tag{
+  background-color: #101516;
+  transition: transform 0.2s ease-in-out;
+}
+.dark .tag a{
+  color: #6168e0;
+}
+/*--------------------------*/
+/* POSTS */
+.dark .post{
+  margin: 0.25em;
+  border: dotted 1px #c5c4c4;
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  font-size: 1.15em;
+  background-color: #101516;  
+}
+.dark .post a {
+  color: #6168e0;
+  text-decoration: none;
+
+}
+/*--------------------------*/
