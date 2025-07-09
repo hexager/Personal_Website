@@ -1,12 +1,9 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'A Framework for Data-Efficient GANs Using Synergistic Regularization'
 pubDate: 2024-07-09
 description: 'A project I formed using ideas from the Deceive D and Augmentation Aware Self Supervision Papers'
 author: 'Siddhanth Methil'
-image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
+image: '../../images/SynRegThumbnail.png'
 tags: []
 ---
 ## The Challenge: Overcoming Data Scarcity in GAN Training

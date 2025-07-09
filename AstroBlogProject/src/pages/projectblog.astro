@@ -2,10 +2,32 @@
 const pageTitle = "Projects";
 import '../styles/global.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
-const allPosts = await Astro.glob('./projectposts/*.md');
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+const allPosts = await getCollection('project');
 ---
 <BaseLayout pageTitle={pageTitle}>
-	<div class = "posts">
-	{allPosts.map((post) => <li class = "post"><a href={post.url}>{post.frontmatter.title}</a></li>)}
+	<div class="project-grid">
+		{allPosts.map((post) => (
+			<a href={`/projects/${post.slug}`} class="project-link">
+				<ProjectCard 
+					title={post.data.title} 
+					description={post.data.description} 
+					image={post.data.image}
+				/>
+			</a>
+		))}
 	</div>
+
+	<style>
+		.project-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 1rem;
+		}
+		.project-link {
+			text-decoration: none;
+			color: inherit;
+		}
+	</style>
 </BaseLayout>
