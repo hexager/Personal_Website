@@ -7,6 +7,7 @@ import { getCollection } from 'astro:content';
 const allPosts = await getCollection('project');
 ---
 <BaseLayout pageTitle={pageTitle}>
+	<h1>{pageTitle}</h1>
 	<div class="project-grid">
 		{allPosts.map((post) => (
 			<a href={`/projects/${post.slug}`} class="project-link">
@@ -18,16 +19,4 @@ const allPosts = await getCollection('project');
 			</a>
 		))}
 	</div>
-
-	<style>
-		.project-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-			gap: 1rem;
-		}
-		.project-link {
-			text-decoration: none;
-			color: inherit;
-		}
-	</style>
 </BaseLayout>

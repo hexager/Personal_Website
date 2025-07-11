@@ -1,4 +1,4 @@
----
+--- 
 import Navigation from "./Navigation.astro";
 import Hamburger from "./Hamburger.astro";
 import ThemeIcon from './ThemeIcon.astro';
@@ -6,8 +6,10 @@ import ThemeIcon from './ThemeIcon.astro';
 ---
 <header>
     <nav>
-        <Hamburger></Hamburger>
-        <ThemeIcon></ThemeIcon>
+        <div class="nav-left">
+            <Hamburger></Hamburger>
+            <ThemeIcon></ThemeIcon>
+        </div>
         <Navigation></Navigation>
     </nav>
 </header>

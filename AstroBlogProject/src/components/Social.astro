@@ -5,8 +5,13 @@ const { platform, username } = Astro.props;
 <style>
     a {
       padding: 0.5rem 1rem;
-      color: white;
-      background-color: #4c1d95;
+      color: #ECEFF1; /* Light text */
+      background-color: #E53935; /* Primary Red */
       text-decoration: none;
+      border-radius: 0.25rem;
+      transition: background-color 0.3s ease;
+    }
+    a:hover {
+      background-color: #B71C1C; /* Darker Red on hover */
     }
 </style>

@@ -19,8 +19,9 @@ import Header from '../components/Header.astro';
 		</style>
 	</head>
 	<body>
-		<h1>{pageTitle}</h1>
+		<main>
         <slot></slot>
+		</main>
 		<Footer></Footer>
 		<script>
 			import "../scripts/menu.js";

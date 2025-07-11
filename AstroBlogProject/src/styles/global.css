@@ -1,7 +1,9 @@
 /*Global styles for the HTML document.*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
 html {
-    background-color: #fbf4f4;
-    font-family: sans-serif;
+    background-color: #F8F8F8; /* Light background */
+    font-family: 'Open Sans', sans-serif;
     transition: background-color 0.3s, color 0.3s;
   }
 
@@ -12,7 +14,7 @@ html {
     max-width: 80ch;
     padding: 1rem;
     line-height: 1.5;
-    color: #1c0e0d;
+    color: #212121; /* Dark text */
     transition: background-color 0.3s, color 0.3s;
   }
   /*--------------------------*/
@@ -24,10 +26,23 @@ html {
 h1 {
     margin: 1rem 0;
     font-size: 4rem;
-    color: #cc220f;
+    color: #E53935; /* Primary Red */
+    font-family: 'Montserrat', sans-serif;
   }
 /*--------------------------*/
 /* nav styles */
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
 .hamburger {
     padding-right: 20px;
     cursor: pointer;
@@ -38,21 +53,23 @@ h1 {
     width: 40px;
     height: 5px;
     margin-bottom: 10px;
-    background-color: #f06151;
+    background-color: #E53935; /* Primary Red */
   }
 /*--------------------------*/
 /* Set the style of navigation bar*/
 .nav-links {
     width: 100%;
-    top: 5rem;
-    left: 48px;
-    background-color: #cb1a06;
+    background-color: #B71C1C; /* Darker Red for nav background */
     display: none;
     margin: 0;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    z-index: 1000;
   }
   
 .nav-links a {
-  color: #cc220f;
+  color: #ECEFF1; /* Light text on dark nav */
   display: block;
   text-align: center;
   padding: 10px 0;
@@ -64,7 +81,7 @@ h1 {
   
 .nav-links a:hover,
 .nav-links a:focus {
-  background-color: #ea867b;
+  background-color: #E53935; /* Primary Red for hover */
 }
 .themeicon{
   display:inline;
@@ -80,7 +97,7 @@ h1 {
 /*--------------------------*/
 /* TAGS*/
 .taglink a {
-  color: #00539F;
+  color: #E53935; /* Primary Red */
   text-decoration: none;
 }
 
@@ -91,15 +108,16 @@ h1 {
 
 .tag {
   margin: 0.25em;
-  border: dotted 1px #a1a1a1;
-  border-radius: .5em;
+  border: solid 1px #E0E0E0; /* Light grey solid border */
+  border-radius: .75em;
   padding: .5em 1em;
   font-size: 1.15em;
-  background-color: #F8FCFD;
+  background-color: #F0F0F0; /* Light grey */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
   .tag a{
     text-decoration: none;
-    color: #1f259e;
+    color: #E53935; /* Primary Red */
   }
 
 /*--------------------------*/
@@ -111,15 +129,16 @@ h1 {
   
 .post {
     margin: 0.25em;
-    border: dotted 1px #c5c4c4;
-    border-radius: 0.5em;
+    border: solid 1px #E0E0E0; /* Light grey solid border */
+    border-radius: 0.75em;
     padding: 0.5em 1em;
     font-size: 1.15em;
-    background-color: #F8FCFD;
+    background-color: #F0F0F0; /* Light grey */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   }
   
 .post a {
-    color: #6168e0;
+    color: #E53935; /* Primary Red */
     text-decoration: none;
   }
 /*--------------------------*/
@@ -129,7 +148,7 @@ h1 {
 @media screen and (min-width: 636px) {
     .nav-links {
       margin-left: 5em;
-      display: block;
+      display: flex; /* Use flexbox for horizontal alignment */
       position: static;
       width: auto;
       background: none;
@@ -138,6 +157,7 @@ h1 {
     .nav-links a {
       display: inline-block;
       padding: 15px 20px;
+      color: #212121; /* Dark text for light mode desktop nav */
     }
     .hamburger{
         display:none;
@@ -147,42 +167,97 @@ h1 {
 /*------------DARK MODE--------------*/
 /*-Global style for background*/
 html.dark {
-  background-color: #0b0404;
-  color: #f2e4e3;
-  ;
+  background-color: #1A1A1A; /* Dark mode background */
+  color: #ECEFF1; /* Light text */
 }
 /*--------------------------*/
 /*TAGS*/
 .dark .nav-links a {
-  color: #ae1f0f;
+  color: #ECEFF1; /* Light text on dark nav */
 }
 .dark .nav-links a:hover,
 .dark .nav-links a:focus {
-  background-color: #5d170f;
+  background-color: #333; /* Dark grey for hover */
 }  
 .dark body{
-  color: #f2e4e3;
+  color: #ECEFF1; /* Light text */
 }
 .dark .tag{
-  background-color: #101516;
+  background-color: #2C2C2C; /* Dark grey */
+  border: solid 1px #424242; /* Darker grey solid border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Darker subtle shadow */
   transition: transform 0.2s ease-in-out;
 }
 .dark .tag a{
-  color: #6168e0;
+  color: #E53935; /* Primary Red */
 }
 /*--------------------------*/
 /* POSTS */
 .dark .post{
   margin: 0.25em;
-  border: dotted 1px #c5c4c4;
-  border-radius: 0.5em;
+  border: solid 1px #424242; /* Darker grey solid border */
+  border-radius: 0.75em;
   padding: 0.5em 1em;
   font-size: 1.15em;
-  background-color: #101516;  
+  background-color: #2C2C2C;  /* Dark grey */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Darker subtle shadow */
 }
 .dark .post a {
-  color: #6168e0;
+  color: #E53935; /* Primary Red */
   text-decoration: none;
 
 }
 /*--------------------------*/
+
+/* Project Grid Styles */
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 1rem;
+}
+.project-link {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* Project Card Styles */
+.project-card {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: transform 0.2s;
+}
+
+.project-card:hover {
+	transform: translateY(-5px);
+}
+
+.project-card img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+
+.project-card-content {
+	padding: 1rem;
+}
+
+.project-card-content h3 {
+	margin: 0 0 0.5rem;
+}
+
+.project-card-content p {
+	margin: 0;
+	color: #555;
+}
+
+/* Dark Mode Project Card Styles */
+.dark .project-card {
+	background-color: #333;
+	border-color: #555;
+}
+
+.dark .project-card-content p {
+	color: #ccc;
+}

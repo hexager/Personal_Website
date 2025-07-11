@@ -12,12 +12,13 @@ import { Image } from 'astro:assets';
 
 <style>
   .project-card {
-    border: 1px solid #ddd;
+    border: 1px solid #E0E0E0; /* Lighter grey border */
     border-radius: 8px;
     overflow: hidden;
     margin: 1rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: transform 0.2s;
+    background-color: #F8F8F8; /* Light background */
   }
 
   .project-card:hover {
@@ -37,10 +38,26 @@ import { Image } from 'astro:assets';
   .card-content h3 {
     margin: 0 0 0.5rem;
     font-size: 1.5rem;
+    color: #E53935; /* Primary Red */
   }
 
   .card-content p {
     margin: 0;
-    color: #666;
+    color: #424242; /* Darker grey for better contrast */
+  }
+
+  /* Dark mode styles */
+  html.dark .project-card {
+    background-color: #2C2C2C; /* Dark grey background */
+    border: 1px solid #424242; /* Darker grey border */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  html.dark .card-content h3 {
+    color: #E53935; /* Primary Red */
+  }
+
+  html.dark .card-content p {
+    color: #ECEFF1; /* Light text */
   }
 </style>
