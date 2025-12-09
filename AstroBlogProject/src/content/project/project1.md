@@ -2,9 +2,14 @@
 title: 'A Framework for Data-Efficient GANs Using Synergistic Regularization'
 pubDate: 2024-07-09
 description: 'A project I formed using ideas from the Deceive D and Augmentation Aware Self Supervision Papers'
-author: 'Siddhanth Methil'
+status: "completed"
+type: "experiment"
+priority: 1
+stack: ["PyTorch", "Python"]
 image: '../../images/SynRegThumbnail.png'
-tags: []
+tags: [ "Data Scarcity", "Computer Vision", "GANs"]
+links: 
+    github: https://github.com/hexager/SynRegGAN
 ---
 ## The Challenge: Overcoming Data Scarcity in GAN Training
 Generative Adversarial Networks (GANs) have demonstrated remarkable capabilities in high-fidelity image synthesis. However, their success is often predicated on the availability of massive datasets.

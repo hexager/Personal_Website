@@ -1,63 +1,69 @@
 ---
-const { title, description, image } = Astro.props;
 import { Image } from 'astro:assets';
+const { data, slug } = Astro.props;
+const { 
+  title, 
+  description, 
+  status = 'completed', 
+  stack = [], 
+  type = 'project', 
+  priority = 99, 
+  image 
+} = data;
+
+const getStatusColor = (status) => {
+  switch(status) {
+    case 'published': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+    case 'in-progress': return 'bg-amber-500/20 text-amber-400 border-amber-500/30 animate-pulse';
+    case 'archived': return 'bg-zinc-800 text-zinc-500 border-zinc-700';
+    default: return 'bg-green-500/20 text-green-400 border-green-500/30';
+  }
+};
 ---
-<div class="project-card">
-  <Image src={image} alt={title} inferSize={true} />
-  <div class="card-content">
-    <h3>{title}</h3>
-    <p>{description}</p>
-  </div>
-</div>
 
-<style>
-  .project-card {
-    border: 1px solid #E0E0E0; /* Lighter grey border */
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
-    background-color: #F8F8F8; /* Light background */
-  }
+<a href={`/projects/${slug}`} class="group relative block h-full w-full">
+  <article class="h-full w-full flex flex-col bg-zinc-900/40 border border-white/10 hover:border-accent/50 hover:bg-zinc-900/80 transition-all duration-300 overflow-hidden backdrop-blur-sm"> 
+    <div class="relative w-full aspect-video border-b border-white/5 overflow-hidden bg-zinc-950">
+      {image && (
+        <Image 
+          src={image} 
+          alt={title}
+          width={600}
+          height={338}
+          class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
+        />
+      )}
+      <div class={`absolute top-3 right-3 px-2 py-1 text-[10px] font-mono uppercase tracking-wider border rounded-sm backdrop-blur-md flex items-center gap-2 ${getStatusColor(status)}`}>
+        <div class={`w-1.5 h-1.5 rounded-full ${status === 'in-progress' ? 'bg-amber-400 animate-pulse' : 'bg-current'}`}></div>
+        {status}
+      </div>
+    </div>
+    <div class="p-5 flex flex-col flex-1">
+      <div class="flex justify-between items-center mb-3 text-[10px] font-mono">
+        <span class="text-accent tracking-widest uppercase">[{type}]</span>
+        <span class="text-zinc-600">ID_{priority.toString().padStart(3, '0')}</span>
+      </div>
 
-  .project-card:hover {
-    transform: translateY(-5px);
-  }
+      <h3 class="text-lg font-bold text-zinc-100 mb-2 tracking-tight group-hover:text-accent transition-colors">
+        {title}
+      </h3>
+      <p class="text-sm text-zinc-400 leading-relaxed line-clamp-2 mb-6">
+        {description}
+      </p>
 
-  .project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
+      <div class="mt-auto flex flex-wrap gap-2 pt-4 border-t border-white/5">
+        {stack.slice(0, 3).map((tech) => (
+          <span class="px-1.5 py-0.5 text-[10px] font-mono text-zinc-500 border border-white/5 bg-white/5 rounded-sm">
+            {tech}
+          </span>
+        ))}
+        {stack.length > 3 && (
+          <span class="text-[10px] font-mono text-zinc-600 py-0.5">+{stack.length - 3}</span>
+        )}
+      </div>
+    </div>
 
-  .card-content {
-    padding: 1.5rem;
-  }
-
-  .card-content h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.5rem;
-    color: #E53935; /* Primary Red */
-  }
-
-  .card-content p {
-    margin: 0;
-    color: #424242; /* Darker grey for better contrast */
-  }
-
-  /* Dark mode styles */
-  html.dark .project-card {
-    background-color: #2C2C2C; /* Dark grey background */
-    border: 1px solid #424242; /* Darker grey border */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  }
-
-  html.dark .card-content h3 {
-    color: #E53935; /* Primary Red */
-  }
-
-  html.dark .card-content p {
-    color: #ECEFF1; /* Light text */
-  }
-</style>
+    <div class="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/20 group-hover:border-accent transition-colors"></div>
+    <div class="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/20 group-hover:border-accent transition-colors"></div>
+  </article>
+</a>

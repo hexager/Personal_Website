@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import TerminalLayout from '../../layouts/TerminalLayout.astro';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<TerminalLayout pageTitle={`NOTE // ${entry.data.title}`}>
+  
+  <article class="max-w-2xl mx-auto mt-12 md:mt-20">
+    
+    <div class="mb-8 pb-8 border-b border-zinc-800">
+      <div class="flex items-center gap-3 text-xs font-mono text-zinc-500 mb-4">
+        <a href="/notes" class="hover:text-accent transition-colors">../</a>
+        <span>{entry.data.pubDate.toISOString().split('T')[0]}</span>
+        <span class="text-zinc-700">|</span>
+        <div class="flex gap-2">
+          {entry.data.tags.map(tag => <span>#{tag}</span>)}
+        </div>
+      </div>
+      
+      <h1 class="text-3xl md:text-4xl font-bold text-zinc-100 tracking-tight leading-tight">
+        {entry.data.title}
+      </h1>
+    </div>
+    <div class="prose prose-invert prose-zinc prose-lg max-w-none 
+                prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-zinc-200
+                prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+                prose-code:text-zinc-300 prose-code:bg-zinc-800 prose-code:px-1 prose-code:rounded-sm prose-code:font-mono prose-code:before:content-none prose-code:after:content-none
+                prose-pre:bg-[#09090b] prose-pre:border prose-pre:border-zinc-800">
+      <Content />
+    </div>
+
+  </article>
+</TerminalLayout>

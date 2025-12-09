@@ -1,10 +1,17 @@
 ---
 const pageTitle = "About Me";
 import '../styles/global.css';
-import Header from '../components/Header.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalLayout from '../layouts/TerminalLayout.astro';
 ---
-<BaseLayout pageTitle={pageTitle}>
-	<h1>{pageTitle}</h1>
-	<h3>Hello! My name is Siddhanth, I am an undergraduate student studing Computer Science and this website is what I use to blog about what I am currently learning, display my Work-in-Progress and Completed Projects.</h3>
-</BaseLayout>
+<TerminalLayout pageTitle={pageTitle}>
+	<header class="mb-16 pl-6 border-l-2 border-accent">
+    <h1 class="text-4xl md:text-5xl font-bold text-zinc-100 mb-4 tracking-tighter">
+      ABOUT ME
+    </h1>
+  </header>
+	<h3>Hello! I'm Siddhanth Methil (aka Hexager), an undergraduate Computer Science and Engineering student at Manipal Institute of Technology.</h3>
+  <p>I am really interested in breaking into ML Research, currently I am working on Federated Learning, and educating myself about Mechanistic Interpretability </p>
+  <span class="block mt-4 font-mono text-sm text-accent">
+        > CURRENTLY: Mars Rover Manipal
+  </span>
+</TerminalLayout>

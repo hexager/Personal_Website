@@ -1,22 +1,35 @@
 ---
-const pageTitle = "Projects";
-import '../styles/global.css';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
-const allPosts = await getCollection('project');
+import TerminalLayout from '../layouts/TerminalLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const allProjects = await getCollection('project');
+
+
+const sortedProjects = allProjects.sort((a, b) => {
+  const pA = a.data.priority ?? 99;
+  const pB = b.data.priority ?? 99;
+  return pA - pB;
+});
+
+const pageTitle = "Work Log // Projects";
 ---
-<BaseLayout pageTitle={pageTitle}>
-	<h1>{pageTitle}</h1>
-	<div class="project-grid">
-		{allPosts.map((post) => (
-			<a href={`/projects/${post.slug}`} class="project-link">
-				<ProjectCard 
-					title={post.data.title} 
-					description={post.data.description} 
-					image={post.data.image}
-				/>
-			</a>
-		))}
-	</div>
-</BaseLayout>
+
+<TerminalLayout pageTitle={pageTitle}>
+  
+  <header class="mb-16 pl-6 border-l-2 border-accent">
+    <h1 class="text-4xl md:text-5xl font-bold text-zinc-100 mb-4 tracking-tighter">
+      MISSION LOGS
+    </h1>
+    <p class="text-zinc-400 max-w-xl text-lg">
+      Selected research artifacts, engineering projects, and experiments.
+    </p>
+  </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {sortedProjects.map((project) => (
+      <ProjectCard data={project.data} slug={project.slug} />
+    ))}
+  </div>
+
+</TerminalLayout>

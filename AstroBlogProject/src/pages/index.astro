@@ -1,9 +1,43 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "Siddhanth Methil / Hexager";
+import TerminalLayout from '../layouts/TerminalLayout.astro';
+import SparseCubeCanvas from '../components/SparseCube.jsx'; // <--- The new component
+
+const pageTitle = "Sid Methil // Researcher";
 ---
-<BaseLayout pageTitle={pageTitle}>
-  <h1>{pageTitle}</h1>
-  <p>Welcome to my corner of the internet!</p>
-  <h2>Student studying Computer Science</h2>
-</BaseLayout>
+
+<TerminalLayout pageTitle={pageTitle}>
+  <SparseCubeCanvas client:load />
+
+  <!-- 2. Main Content (Centered and floating above) -->
+  <section class="relative z-10 flex flex-col justify-center min-h-[80vh] space-y-12 pointer-events-none">
+    <div class="space-y-4 text-center md:text-left md:pl-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-black/40 border border-white/10 rounded-full backdrop-blur-md">
+         <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+         <span class="font-mono text-[10px] text-zinc-400 tracking-widest uppercase">
+           Voxel_Grid_Active
+         </span>
+      </div>
+
+      <h1 class="text-6xl md:text-9xl font-bold text-zinc-100 tracking-tighter leading-none mix-blend-difference">
+        RESEARCH <br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-zinc-500 to-zinc-800">
+          ENGINEER
+        </span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-zinc-400 max-w-2xl font-light leading-relaxed mix-blend-difference">
+        Building models which are computation-efficient and data-efficient.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-4 pt-4 md:pl-12 pointer-events-auto">
+      <a href="/projectblog" class="group relative px-8 py-4 bg-zinc-100 text-zinc-950 font-bold font-mono text-sm tracking-tight hover:bg-white transition-all">
+        EXPLORE_MODULES →
+      </a>
+      <a href="/about" class="px-8 py-4 border border-white/10 text-zinc-400 font-mono text-sm hover:text-white hover:border-white/30 transition-all bg-black/20 backdrop-blur-md">
+        ACCESS_BIO
+      </a>
+    </div>
+
+  </section>
+</TerminalLayout>
