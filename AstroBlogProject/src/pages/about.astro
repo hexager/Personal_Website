@@ -1,9 +1,10 @@
 ---
-const pageTitle = "About Me";
-import '../styles/global.css';
 import TerminalLayout from '../layouts/TerminalLayout.astro';
+
+const pageTitle = "About Me";
+const description = "About Siddhanth Methil — CS undergraduate at Manipal Institute of Technology, researching Federated Learning and Mechanistic Interpretability.";
 ---
-<TerminalLayout pageTitle={pageTitle}>
+<TerminalLayout pageTitle={pageTitle} description={description}>
 	<header class="mb-16 pl-6 border-l-2 border-accent">
     <h1 class="text-4xl md:text-5xl font-bold text-zinc-100 mb-4 tracking-tighter">
       ABOUT ME

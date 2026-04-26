@@ -9,9 +9,10 @@ const allNotes = await getCollection('notes', ({ data }) => {
 const sortedNotes = allNotes.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const pageTitle = "Knowledge Base // Notes";
+const description = "Technical notes, essays, and field observations by Siddhanth Methil on machine learning, computer vision, and AI research.";
 ---
 
-<TerminalLayout pageTitle={pageTitle}>
+<TerminalLayout pageTitle={pageTitle} description={description}>
   
   <header class="mb-12 pl-6 border-l-2 border-zinc-700">
     <h1 class="text-4xl font-bold text-zinc-100 tracking-tighter mb-2">

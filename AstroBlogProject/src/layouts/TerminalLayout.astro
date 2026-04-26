@@ -1,19 +1,37 @@
 ---
 import '../styles/global.css';
-const { pageTitle } = Astro.props;
+import BaseHead from '../components/BaseHead.astro';
+
+interface Props {
+  pageTitle: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { 
+  pageTitle,
+  description = 'Siddhanth Methil — CS undergraduate and ML researcher. Portfolio, projects, and research notes on Federated Learning, Computer Vision, and more.',
+  ogImage,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: '~/HOME' },
+  { href: '/projectblog', label: '~/WORK' },
+  { href: '/about', label: '~/ABOUT' },
+  { href: '/notes', label: '~/NOTES' },
+];
+
+function isActive(linkHref: string, currentPath: string): boolean {
+  if (linkHref === '/') return currentPath === '/';
+  return currentPath.startsWith(linkHref);
+}
 ---
 
 <html lang="en" class="scroll-smooth">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <title>{pageTitle}</title>
+    <BaseHead title={pageTitle} description={description} ogImage={ogImage} />
   </head>
   
   <body class="bg-background text-zinc-400 min-h-screen flex flex-col selection:bg-accent/20 selection:text-white overflow-x-hidden">
@@ -22,9 +40,9 @@ const { pageTitle } = Astro.props;
     <header class="w-full px-6 py-4 flex justify-between items-center border-b border-white/5">
       <div class="flex items-center gap-3">
         <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-        <span class="font-mono text-sm font-bold text-zinc-100 tracking-widest">
+        <a href="/" class="font-mono text-sm font-bold text-zinc-100 tracking-widest hover:text-accent transition-colors">
           SID.METHIL//Hexager<span class="text-zinc-600"> // RSRCH</span>
-        </span>
+        </a>
       </div>
       <div class="hidden md:block font-mono text-xs text-zinc-600">
         SYS.READY
@@ -41,10 +59,18 @@ const { pageTitle } = Astro.props;
       <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
         
         <div class="flex items-center gap-6 font-mono text-sm">
-          <a href="/" class="hover:text-accent transition-colors duration-200">~/HOME</a>
-          <a href="/projectblog" class="hover:text-accent transition-colors duration-200">~/WORK</a>
-          <a href="/about" class="hover:text-accent transition-colors duration-200">~/ABOUT</a>
-          <a href="/notes" class="hover:text-accent transition-colors duration-200">~/NOTES</a>
+          {navLinks.map(link => (
+            <a 
+              href={link.href} 
+              class={`transition-colors duration-200 ${
+                isActive(link.href, currentPath)
+                  ? 'text-accent'
+                  : 'text-zinc-400 hover:text-accent'
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
 
         <div class="hidden sm:flex items-center gap-2 text-xs text-zinc-600">

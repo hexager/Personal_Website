@@ -2,10 +2,11 @@
 import TerminalLayout from '../layouts/TerminalLayout.astro';
 import SparseCubeCanvas from '../components/SparseCube.jsx'; // <--- The new component
 
-const pageTitle = "Sid Methil // Researcher";
+const pageTitle = "Sid Methil // CS Undergrad · ML Research";
+const description = "Siddhanth Methil — CS undergraduate and ML researcher building computation-efficient and data-efficient models. Portfolio, projects, and research notes.";
 ---
 
-<TerminalLayout pageTitle={pageTitle}>
+<TerminalLayout pageTitle={pageTitle} description={description}>
   <SparseCubeCanvas client:load />
 
   <!-- 2. Main Content (Centered and floating above) -->
@@ -14,14 +15,14 @@ const pageTitle = "Sid Methil // Researcher";
       <div class="inline-flex items-center gap-2 px-3 py-1 bg-black/40 border border-white/10 rounded-full backdrop-blur-md">
          <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
          <span class="font-mono text-[10px] text-zinc-400 tracking-widest uppercase">
-           Voxel_Grid_Active
+           Terminally Online
          </span>
       </div>
 
-      <h1 class="text-6xl md:text-9xl font-bold text-zinc-100 tracking-tighter leading-none mix-blend-difference">
-        RESEARCH <br />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-zinc-500 to-zinc-800">
-          ENGINEER
+      <h1 class="font-bold text-zinc-100 tracking-tighter leading-none mix-blend-difference">
+        <span class="block text-6xl md:text-9xl">SID METHIL</span>
+        <span class="block text-xl md:text-3xl mt-3 md:mt-4 tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-zinc-400 to-zinc-600 font-mono">
+          CS UNDERGRAD · ML RESEARCH
         </span>
       </h1>
       

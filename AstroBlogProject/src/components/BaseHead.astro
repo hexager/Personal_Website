@@ -1,0 +1,86 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const SITE_URL = 'https://sidmethil.netlify.app';
+const SITE_NAME = 'Siddhanth Methil — CS Undergrad · ML Research';
+
+const {
+  title,
+  description,
+  ogImage = '/og-default.png',
+  canonicalURL = new URL(Astro.url.pathname, SITE_URL).href,
+} = Astro.props;
+
+const fullTitle = title.includes('Siddhanth') || title.includes('Sid Methil')
+  ? title
+  : `${title} — Siddhanth Methil`;
+
+const resolvedOgImage = ogImage.startsWith('http')
+  ? ogImage
+  : new URL(ogImage, SITE_URL).href;
+---
+
+<!-- Core -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+<meta name="author" content="Siddhanth Methil" />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={resolvedOgImage} />
+<meta property="og:site_name" content={SITE_NAME} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={fullTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={resolvedOgImage} />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Siddhanth Methil",
+  "alternateName": "Hexager",
+  "url": SITE_URL,
+  "jobTitle": "CS Undergraduate · ML Researcher",
+  "description": "Building computation-efficient and data-efficient ML models.",
+  "knowsAbout": [
+    "Federated Learning",
+    "Machine Learning",
+    "Computer Vision",
+    "Generative Adversarial Networks",
+    "Mechanistic Interpretability"
+  ],
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Manipal Institute of Technology"
+  },
+  "sameAs": [
+    "https://github.com/hexager"
+  ]
+})} />
