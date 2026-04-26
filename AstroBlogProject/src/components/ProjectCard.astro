@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-const { data, slug } = Astro.props;
+const { data, id } = Astro.props;
 const { 
   title, 
   description, 
@@ -21,7 +21,7 @@ const getStatusColor = (status) => {
 };
 ---
 
-<a href={`/projects/${slug}`} class="group relative block h-full w-full">
+<a href={`/projects/${id}`} class="group relative block h-full w-full">
   <article class="h-full w-full flex flex-col bg-zinc-900/40 border border-white/10 hover:border-accent/50 hover:bg-zinc-900/80 transition-all duration-300 overflow-hidden backdrop-blur-sm"> 
     <div class="relative w-full aspect-video border-b border-white/5 overflow-hidden bg-zinc-950">
       {image && (
