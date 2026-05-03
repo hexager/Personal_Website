@@ -1,18 +1,175 @@
 ---
 import TerminalLayout from '../layouts/TerminalLayout.astro';
+import { Image } from 'astro:assets';
+import profilePhoto from '../images/profile.jpg';  // <-- Drop your photo at src/images/profile.jpg and uncomment these two lines
 
 const pageTitle = "About Me";
 const description = "About Siddhanth Methil — CS undergraduate at Manipal Institute of Technology, researching Federated Learning and Mechanistic Interpretability.";
+
+const researchInterests = [
+  { name: "Federated Learning", status: "active", note: "Training models across distributed devices without centralizing data. Currently exploring model matching strategies like FedMA." },
+  { name: "Mechanistic Interpretability", status: "learning", note: "Reverse-engineering neural networks to understand the algorithms they learn internally." },
+];
+
+const timeline = [
+  { 
+    year: "NOW", title: "Mars Rover Manipal", detail: "AI Research Member",
+    sub: [
+      { title: "Federated Learning Research", detail: "Investigating model matching and aggregation strategies — working with FedMA and pFedMA variants" },
+     { title: "SynRegGAN", detail: "Built a framework combining AugSelf and Adaptive Pseudo-Augmentation for data-efficient GAN training" },
+    ],
+  },
+  { year: "2024–", title: "Manipal Institute of Technology", detail: "B.Tech, Computer Science and Engineering" },
+];
+
+const statusStyle = {
+  active: "text-emerald-400",
+  learning: "text-amber-400",
+  explored: "text-zinc-500",
+};
 ---
+
 <TerminalLayout pageTitle={pageTitle} description={description}>
-	<header class="mb-16 pl-6 border-l-2 border-accent">
-    <h1 class="text-4xl md:text-5xl font-bold text-zinc-100 mb-4 tracking-tighter">
-      ABOUT ME
-    </h1>
-  </header>
-	<h3>Hello! I'm Siddhanth Methil (aka Hexager), an undergraduate Computer Science and Engineering student at Manipal Institute of Technology.</h3>
-  <p>I am really interested in breaking into ML Research, currently I am working on Federated Learning, and educating myself about Mechanistic Interpretability </p>
-  <span class="block mt-4 font-mono text-sm text-accent">
-        > CURRENTLY: Mars Rover Manipal
-  </span>
+
+  <!-- HERO: Photo + Intro -->
+  <section class="mb-20">
+    <div class="flex flex-col md:flex-row gap-10 md:gap-14 items-start">
+
+      <!-- Photo -->
+      <div class="shrink-0">
+        <div class="relative group">
+          <Image src={profilePhoto} alt="Siddhanth Methil" width={280} height={280} class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-sm border border-white/10 " />
+          <!-- Corner brackets -->
+          <div class="absolute -top-1 -left-1 w-3 h-3 border-l-2 border-t-2 border-accent/50 group-hover:border-accent transition-colors"></div>
+          <div class="absolute -bottom-1 -right-1 w-3 h-3 border-r-2 border-b-2 border-accent/50 group-hover:border-accent transition-colors"></div>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="space-y-5">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold text-zinc-100 tracking-tighter mb-2">
+            Hey, I'm Siddhanth.
+          </h1>
+          <div class="font-mono text-xs text-zinc-600 tracking-widest uppercase">
+            Siddhanth Methil // Hexager
+          </div>
+        </div>
+
+        <div class="space-y-4 text-zinc-300 text-lg leading-relaxed max-w-2xl">
+          <p>
+            I'm a Computer Science undergraduate at 
+            <span class="text-zinc-100 font-medium">Manipal Institute of Technology</span>, 
+            and I spend most of my time thinking about machine learning, other things that pass my mind are 3d modelling and sometimes games.
+          </p>
+          <p>
+            Right now I'm deep into <span class="text-zinc-100 font-medium">Federated Learning</span> 
+            research and teaching myself  Mechanistic Interpretability,
+            trying to understand not just <em>how</em> models perform, but <em>why</em> they 
+            do what they do and how we can make them safer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH INTERESTS -->
+  <section class="mb-20">
+    <h2 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-8 pb-2 border-b border-white/5">
+      Research Interests
+    </h2>
+
+    <div class="space-y-0 font-mono text-sm">
+      {researchInterests.map((interest) => (
+        <div class="group flex gap-4 py-4 border-b border-white/5 last:border-0">
+          <div class="shrink-0 pt-0.5">
+            <span class={`text-xs tracking-widest uppercase ${statusStyle[interest.status]}`}>
+              {interest.status}
+            </span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="text-zinc-100 font-bold">{interest.name}</span>
+            <span class="text-zinc-500 ml-2 font-sans text-sm">— {interest.note}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="mb-20">
+    <h2 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-8 pb-2 border-b border-white/5">
+      Timeline
+    </h2>
+
+    <div class="relative ml-4">
+      <!-- Vertical line -->
+      <div class="absolute left-0 top-2 bottom-2 w-px bg-zinc-800"></div>
+
+      <div class="space-y-0">
+        {timeline.map((entry) => (
+          <div class="relative pl-8 py-4 group">
+            <!-- Dot on the line -->
+            <div class={`absolute left-0 top-[1.35rem] w-2 h-2 rounded-full -translate-x-[3.5px] border-2 border-background ${
+              entry.year === "NOW" 
+                ? "bg-accent" 
+                : "bg-zinc-700 group-hover:bg-zinc-500"
+            } transition-colors`}></div>
+
+            <!-- Year label -->
+            <div class="font-mono text-xs text-zinc-600 tracking-widest uppercase mb-1">
+              {entry.year}
+            </div>
+
+            <!-- Content -->
+            <div class="text-zinc-100 font-bold">
+              {entry.title}
+            </div>
+            <div class="text-sm text-zinc-400 mt-0.5">
+              {entry.detail}
+            </div>
+
+            <!-- Sub-items -->
+            {entry.sub && (
+              <div class="mt-3 ml-2 pl-4 border-l border-zinc-800 space-y-3">
+                {entry.sub.map((subEntry) => (
+                  <div>
+                    <div class="text-sm text-zinc-200 font-semibold">{subEntry.title}</div>
+                    <div class="text-xs text-zinc-500 mt-0.5">{subEntry.detail}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section class="mb-8">
+    <h2 class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-8 pb-2 border-b border-white/5">
+      Connect
+    </h2>
+
+    <div class="flex flex-wrap gap-3">
+      <a href="https://github.com/hexager" target="_blank" 
+         class="px-5 py-2.5 border border-white/10 bg-zinc-900/40 hover:border-accent/50 hover:bg-zinc-900/80 text-zinc-300 hover:text-white transition-all font-mono text-sm rounded-sm">
+        GitHub ↗
+      </a>
+      <a href="https://linkedin.com/in/siddhanth-methil" target="_blank" 
+         class="px-5 py-2.5 border border-white/10 bg-zinc-900/40 hover:border-accent/50 hover:bg-zinc-900/80 text-zinc-300 hover:text-white transition-all font-mono text-sm rounded-sm">
+        LinkedIn ↗
+      </a>
+      <a href="mailto:sjmethil@gmail.com"
+         class="px-5 py-2.5 border border-white/10 bg-zinc-900/40 hover:border-accent/50 hover:bg-zinc-900/80 text-zinc-300 hover:text-white transition-all font-mono text-sm rounded-sm">
+        Email ↗
+      </a>
+    </div>
+
+    <p class="mt-6 text-sm text-zinc-500 font-mono">
+      If you're working on something interesting in ML — or if you're a professor looking for motivated researchers — feel free to reach out.
+    </p>
+  </section>
+
 </TerminalLayout>
