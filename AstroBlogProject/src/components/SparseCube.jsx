@@ -1,7 +1,6 @@
-import React, { useRef, useMemo, useState } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
-import * as THREE from 'three';
 
 function VoxelGrid({ count = 8, separation = 0.4 }) {
   const mesh = useRef();
@@ -55,7 +54,6 @@ export default function SparseCubeCanvas() {
   return (
     <div className="absolute inset-0 -z-10 h-full w-full opacity-50">
       <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-        {/*Does not really matter, I just kept it cuz it seems to be what you do */}
         <VoxelGrid />
       </Canvas>
     </div>
