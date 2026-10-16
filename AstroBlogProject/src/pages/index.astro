@@ -1,15 +1,15 @@
 ---
 import TerminalLayout from '../layouts/TerminalLayout.astro';
-import SparseCubeCanvas from '../components/SparseCube.jsx'; // <--- The new component
+import SparseCubeCanvas from '../components/SparseCube.jsx';
 
 const pageTitle = "Sid Methil // CS Undergrad · ML Research";
 const description = "Siddhanth Methil — CS undergraduate and ML researcher building computation-efficient and data-efficient models. Portfolio, projects, and research notes.";
 ---
 
 <TerminalLayout pageTitle={pageTitle} description={description}>
-  <SparseCubeCanvas client:load />
+  <SparseCubeCanvas client:idle />
 
-  <!-- 2. Main Content (Centered and floating above) -->
+  <!-- Main content (floats above the cube) -->
   <section class="relative z-10 flex flex-col justify-center min-h-[80vh] space-y-12 pointer-events-none">
     <div class="space-y-4 text-center md:text-left md:pl-12">
       <div class="inline-flex items-center gap-2 px-3 py-1 bg-black/40 border border-white/10 rounded-full backdrop-blur-md">

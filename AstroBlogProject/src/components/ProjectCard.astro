@@ -4,10 +4,10 @@ const { data, id } = Astro.props;
 const { 
   title, 
   description, 
-  status = 'completed', 
+  status,
   stack = [], 
-  type = 'project', 
-  priority = 99, 
+  type,
+  priority,
   image 
 } = data;
 

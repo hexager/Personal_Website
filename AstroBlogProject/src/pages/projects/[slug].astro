@@ -17,12 +17,12 @@ const { Content } = await render(entry);
 const { 
   title, 
   description, 
-  status = 'completed', 
+  status,
   stack = [], 
   links = {}, 
   image, 
-  type = 'project', 
-  priority = 99,
+  type,
+  priority,
   pubDate
 } = entry.data;
 

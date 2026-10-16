@@ -1,5 +1,4 @@
 import { defineCollection, z } from 'astro:content';
-// Add the new Astro v6 loader import
 import { glob } from 'astro/loaders';
 
 const projectCollection = defineCollection({
