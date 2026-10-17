@@ -7,26 +7,47 @@ const pageTitle = "About Me";
 const description = "About Siddhanth Methil — CS undergraduate at Manipal Institute of Technology, researching Federated Learning and Mechanistic Interpretability.";
 
 const researchInterests = [
-  { name: "Federated Learning", status: "active", note: "Training models across distributed devices without centralizing data. Currently exploring model matching strategies like FedMA." },
-  { name: "Mechanistic Interpretability", status: "learning", note: "Reverse-engineering neural networks to understand the algorithms they learn internally." },
+  { name: "Efficient ML", note: "Useful models from little data and little compute: a data-efficient GAN, a low-parameter ALBERT, on-device LLMs." },
+  { name: "Federated Learning", note: "Training across devices without centralising the data. My work, pFedMA, extends FedMA's matched averaging with pruning." },
+  { name: "Mechanistic Interpretability", note: "Understanding what a network computes internally, not only what it outputs. I have studied a good part of the ARENA curriculum and am working on my own research questions." },
 ];
 
+const education = {
+  title: "Manipal Institute of Technology",
+  detail: "B.Tech, Computer Science and Engineering",
+  start: "2024-08",
+  end: "2028-08",
+};
+
+// Dates are "YYYY-MM". An entry with no `end` is ongoing.
 const timeline = [
-  { 
-    year: "NOW", title: "Mars Rover Manipal", detail: "AI Research Member",
+  {
+    start: "2026-05",
+    end:"2026-07",
+    title: "Virallens",
+    detail: "AI Research Engineering Intern",
     sub: [
-      { title: "Federated Learning Research", detail: "Investigating model matching and aggregation strategies — working with FedMA and pFedMA variants" },
-     { title: "SynRegGAN", detail: "Built a framework combining AugSelf and Adaptive Pseudo-Augmentation for data-efficient GAN training" },
+      { title: "On-device claims extraction", detail: "Gemma 2B (via Ollama) reads PDFs, Excel files and emails, so client data never reaches an external API" },
+      { title: "Claims status dashboard", detail: "Consolidates extracted claim data, document histories and linked emails; adopted by the production team" },
+      { title: "Prompt optimisation", detail: "GEPA (Genetic-Pareto prompt evolution) experiments on RunPod to tune the extraction prompts" },
     ],
   },
-  { year: "2024–", title: "Manipal Institute of Technology", detail: "B.Tech, Computer Science and Engineering" },
+  {
+    start: "2024-10",
+    title: "Mars Rover Manipal",
+    detail: "Student Researcher",
+    sub: [
+      { title: "Federated learning", detail: "pFedMA, a pruned matched-averaging algorithm that improves on FedMA; +15% over FedAvg on CIFAR-10 and USPS" },
+      { title: "Curriculum learning", detail: "A bandit-based scheduler that picks training batches; non-stationary bandits to handle distribution shift across training stages" },
+    ],
+  },
 ];
 
-const statusStyle = {
-  active: "text-emerald-400",
-  learning: "text-amber-400",
-  explored: "text-zinc-500",
-};
+const entries = [...timeline].sort((a, b) => b.start.localeCompare(a.start));
+
+const formatMonth = (ym) =>
+  new Date(`${ym}-01`).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+const range = (e) => `${formatMonth(e.start)} – ${e.end ? formatMonth(e.end) : 'now'}`;
 ---
 
 <TerminalLayout pageTitle={pageTitle} description={description}>
@@ -79,18 +100,11 @@ const statusStyle = {
       Research Interests
     </h2>
 
-    <div class="space-y-0 font-mono text-sm">
+    <div class="space-y-0">
       {researchInterests.map((interest) => (
-        <div class="group flex gap-4 py-4 border-b border-white/5 last:border-0">
-          <div class="shrink-0 pt-0.5">
-            <span class={`text-xs tracking-widest uppercase ${statusStyle[interest.status]}`}>
-              {interest.status}
-            </span>
-          </div>
-          <div class="flex-1 min-w-0">
-            <span class="text-zinc-100 font-bold">{interest.name}</span>
-            <span class="text-zinc-500 ml-2 font-sans text-sm">— {interest.note}</span>
-          </div>
+        <div class="py-4 border-b border-white/5 last:border-0">
+          <div class="font-mono text-sm text-zinc-100 font-bold">{interest.name}</div>
+          <p class="text-sm text-zinc-400 mt-1">{interest.note}</p>
         </div>
       ))}
     </div>
@@ -102,23 +116,27 @@ const statusStyle = {
       Timeline
     </h2>
 
+    <p class="font-mono text-xs text-zinc-500 mb-8">
+      {education.detail} · {education.title} · <span class="whitespace-nowrap">{range(education)}</span>
+    </p>
+
     <div class="relative ml-4">
       <!-- Vertical line -->
       <div class="absolute left-0 top-2 bottom-2 w-px bg-zinc-800"></div>
 
       <div class="space-y-0">
-        {timeline.map((entry) => (
+        {entries.map((entry) => (
           <div class="relative pl-8 py-4 group">
-            <!-- Dot on the line -->
+            <!-- Dot on the line: accent while ongoing -->
             <div class={`absolute left-0 top-[1.35rem] w-2 h-2 rounded-full -translate-x-[3.5px] border-2 border-background ${
-              entry.year === "NOW" 
-                ? "bg-accent" 
-                : "bg-zinc-700 group-hover:bg-zinc-500"
+              entry.end
+                ? "bg-zinc-700 group-hover:bg-zinc-500"
+                : "bg-accent"
             } transition-colors`}></div>
 
-            <!-- Year label -->
+            <!-- Date range -->
             <div class="font-mono text-xs text-zinc-600 tracking-widest uppercase mb-1">
-              {entry.year}
+              {range(entry)}
             </div>
 
             <!-- Content -->
