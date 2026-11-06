@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.2",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.2",
@@ -19,8 +20,11 @@
     "@types/react-dom": "^19.2.3",
     "@types/three": "^0.181.0",
     "astro": "^6.1.9",
+    "katex": "^0.19.1",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "tailwindcss": "^4.1.17",
     "three": "^0.181.2"
   },
