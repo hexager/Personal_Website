@@ -1,6 +1,7 @@
 ---
 import { getCollection,render } from 'astro:content';
 import TerminalLayout from '../../layouts/TerminalLayout.astro';
+import 'katex/dist/katex.min.css';
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes', ({ data }) => {
@@ -38,7 +39,7 @@ const { Content } = await render(entry);
                 prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-zinc-200
                 prose-a:text-accent prose-a:no-underline hover:prose-a:underline
                 prose-code:text-zinc-300 prose-code:bg-zinc-800 prose-code:px-1 prose-code:rounded-sm prose-code:font-mono prose-code:before:content-none prose-code:after:content-none
-                prose-pre:bg-[#09090b] prose-pre:border prose-pre:border-zinc-800">
+                prose-pre:border prose-pre:border-zinc-800">
       <Content />
     </div>
 

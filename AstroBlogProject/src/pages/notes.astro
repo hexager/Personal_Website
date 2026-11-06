@@ -41,9 +41,14 @@ const description = "Notes by Siddhanth Methil on machine learning research: exp
               {note.data.pubDate.toISOString().split('T')[0]}
             </div>
 
-            <!-- Title -->
-            <div class="col-span-12 md:col-span-7 font-bold text-zinc-300 group-hover:text-accent transition-colors truncate">
-              {note.data.title}
+            <!-- Title and description -->
+            <div class="col-span-12 md:col-span-7 min-w-0">
+              <div class="font-bold text-zinc-300 group-hover:text-accent transition-colors truncate">
+                {note.data.title}
+              </div>
+              <p class="mt-1 font-sans text-sm text-zinc-400 line-clamp-2">
+                {note.data.description}
+              </p>
             </div>
 
             <!-- Tags (Right Aligned) -->
@@ -64,6 +69,8 @@ const description = "Notes by Siddhanth Methil on machine learning research: exp
          Nothing here yet.
        </div>
     )}
+
+    <a href="/rss.xml" class="inline-block mt-6 px-4 text-xs text-zinc-500 hover:text-accent transition-colors">RSS NO clue why but sure</a>
 
   </div>
 

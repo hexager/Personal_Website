@@ -27,3 +27,10 @@
     @apply bg-accent/30 text-zinc-100;
   }
 }
+
+/* Inline-code styling from the notes layout should not apply inside code blocks */
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
